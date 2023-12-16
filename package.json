@@ -6,9 +6,16 @@
     "dev": "bun run --watch src/index.ts"
   },
   "dependencies": {
-    "elysia": "latest"
+    "discord.js": "^14.14.1",
+    "elysia": "latest",
+    "puppeteer": "^21.6.1",
+    "puppeteer-autoscroll-down": "^2.0.0",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-adblocker": "^2.13.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2"
   },
   "devDependencies": {
+    "@types/web": "^0.0.127",
     "bun-types": "latest"
   },
   "module": "src/index.js"
