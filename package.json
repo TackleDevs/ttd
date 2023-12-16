@@ -2,14 +2,13 @@
   "name": "ttd",
   "version": "1.0.50",
   "scripts": {
-    "dev": "bun run src/register.ts && bun run --watch src/index.ts",
+    "dev": "bun run --watch src/index.ts",
     "dev:prisma": "rm -rf src/prisma/server.db src/prisma/migratitons && prisma migrate dev --name init",
     "puppeteer": "puppeteer browsers install chrome",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier --write .",
     "prisma": "prisma generate && prisma deploy",
-    "register": "bun run src/register.ts",
     "start": "bun run src/index.ts"
   },
   "dependencies": {
