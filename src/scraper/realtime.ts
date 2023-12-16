@@ -7,8 +7,8 @@ import { scrollPageToBottom } from 'puppeteer-autoscroll-down';
 export const getRealtimeLinks = async () => {
   puppeteer.use(
     AdblockerPlugin({
-      interceptResolutionPriority: DEFAULT_INTERCEPT_RESOLUTION_PRIORITY
-    })
+      interceptResolutionPriority: DEFAULT_INTERCEPT_RESOLUTION_PRIORITY,
+    }),
   );
   puppeteer.use(StealthPlugin());
 
@@ -21,14 +21,14 @@ export const getRealtimeLinks = async () => {
   await scrollPageToBottom(page, {
     size: 800,
     delay: 3000,
-    stepsLimit: 10
+    stepsLimit: 10,
   });
 
   const links = await page.evaluate(() => {
     const anchors = Array.from(document.querySelectorAll('#container a'));
-    return anchors.map(anchor => (anchor as HTMLAnchorElement).href);
+    return anchors.map((anchor) => (anchor as HTMLAnchorElement).href);
   });
 
   await browser.close();
   return links;
-}
+};

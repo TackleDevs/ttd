@@ -1,5 +1,5 @@
 import { Elysia } from 'elysia';
-import { cron } from '@elysiajs/cron'
+// import cron from '@elysiajs/cron';
 
 export const app = new Elysia();
 

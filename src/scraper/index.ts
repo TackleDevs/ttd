@@ -1,2 +1,2 @@
-export { getDayLinks } from "./day";
-export { getRealtimeLinks } from "./realtime";
+export { getDayLinks } from './day';
+export { getRealtimeLinks } from './realtime';
