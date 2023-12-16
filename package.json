@@ -2,10 +2,16 @@
   "name": "ttd",
   "version": "1.0.50",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.ts"
+    "dev": "bun run src/register.ts && bun run --watch src/index.ts",
+    "dev:prisma": "rm -rf src/prisma/server.db src/prisma/migratitons && prisma migrate dev --name init",
+    "puppeteer": "puppeteer browsers install chrome",
+    "prisma": "prisma generate && prisma deploy",
+    "register": "bun run src/register.ts",
+    "start": "bun run src/index.ts"
   },
   "dependencies": {
+    "@elysiajs/cron": "^0.7.0",
+    "@prisma/client": "^5.7.0",
     "discord.js": "^14.14.1",
     "elysia": "latest",
     "puppeteer": "^21.6.1",
@@ -16,7 +22,8 @@
   },
   "devDependencies": {
     "@types/web": "^0.0.127",
-    "bun-types": "latest"
+    "bun-types": "latest",
+    "prisma": "^5.7.0"
   },
   "module": "src/index.js"
 }
