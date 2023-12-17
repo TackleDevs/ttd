@@ -8,7 +8,7 @@
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier --write .",
-    "prisma": "prisma generate && prisma migrate deploy",
+    "prisma": "prisma generate && prisma migrate deploy --name init",
     "start": "bun run src/index.ts"
   },
   "dependencies": {
