@@ -12,11 +12,11 @@ export const realtime: Command = {
   data: new SlashCommandBuilder()
     .setName('realtime')
     .setDescription(
-      'リアルタイムのランキングを表示します ⚠️ 40~80件の間で大量に送信されます ⚠️ ',
+      'リアルタイムのランキングを表示します ⚠️ 20~80件の間で大量に送信されます ⚠️ ',
     ),
   execute: async (interaction) => {
     await interaction.reply(
-      '検索中...   ⚠️ 40~80件の間で大量に送信されます ⚠️',
+      '検索中...   ⚠️ 20~80件の間で大量に送信されます ⚠️',
     );
     try {
       const links = await getRealtimeLinks();
