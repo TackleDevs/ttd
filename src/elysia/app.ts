@@ -9,7 +9,7 @@ export const app = new Elysia();
 app.use(
   cron({
     name: 'heartbeat',
-    pattern: '0 0 * * *',
+    pattern: '0 0 0 * * *',
     run() {
       (async () => {
         try {
@@ -20,6 +20,13 @@ app.use(
           }
           const channels = await getAllChannels();
           for (const channel of channels) {
+            await sendMessage(
+              client,
+              channel.channelId,
+              '=====================================================\n' +
+                '本日のランキングです (1位~)\n' +
+                '=====================================================\n',
+            );
             for (const link of links) {
               await sendMessage(client, channel.channelId, link);
             }
