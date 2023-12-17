@@ -38,7 +38,7 @@ bun i
 # install browser
 bun run puppeteer
 # init database
-bun dev:prisma
+bun run prisma:dev
 
 # start server
 bun dev
