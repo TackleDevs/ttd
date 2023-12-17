@@ -3,12 +3,12 @@
   "version": "1.0.50",
   "scripts": {
     "dev": "bun run --watch src/index.ts",
-    "prisma:dev": "rm -rf src/prisma/server.db prisma/server.db-journal src/prisma/migratitons && prisma migrate dev",
+    "prisma:dev": "rm -rf src/prisma/server.db prisma/server.db-journal src/prisma/migratitons && prisma migrate dev --name init",
     "puppeteer": "puppeteer browsers install chrome",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier --write .",
-    "prisma": "prisma migrate dev && prisma migrate deploy",
+    "prisma": "prisma migrate dev --name init&& prisma migrate deploy",
     "start": "bun run src/index.ts"
   },
   "dependencies": {
