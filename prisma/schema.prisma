@@ -7,16 +7,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Server {
-  id       Int       @id @default(autoincrement())
-  serverId String
-  channels Channel[]
-}
-
 model Channel {
-  id        Int     @id @default(autoincrement())
-  channelId String
-  active    Boolean @default(false)
-  Server    Server? @relation(fields: [serverId], references: [id])
-  serverId  Int?
+  id        Int    @id @default(autoincrement())
+  channelId String @unique
 }

@@ -1,22 +1,22 @@
 import { SlashCommandBuilder } from 'discord.js';
 import { Command } from '../types';
-import { addChannel, existsChannel } from '@/db';
+import { existsChannel, removeChannel } from '@/db';
 
-export const set: Command = {
+export const unset: Command = {
   data: new SlashCommandBuilder()
-    .setName('set')
-    .setDescription('24時間ランキングをこのチャンネルに送信します'),
+    .setName('unset')
+    .setDescription('24時間ランキングの送信を停止します'),
   execute: async (interaction) => {
     await interaction.reply(
-      'このチャンネルにtwi-dougaの24時間ランキングを毎日送信します',
+      'このチャンネルのtwi-dougaの24時間ランキングの送信を停止します',
     );
     try {
       const exists = await existsChannel(interaction.channelId);
-      if (exists) {
-        await interaction.editReply('このチャンネルは既に登録されています');
+      if (!exists) {
+        await interaction.editReply('このチャンネルは登録されていません');
         return;
       }
-      await addChannel(interaction.channelId);
+      await removeChannel(interaction.channelId);
     } catch (error) {
       await interaction.editReply(
         'エラーが発生しました もう一度お試しください\n' + error,
