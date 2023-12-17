@@ -12,6 +12,12 @@ export const sendMessage = async (
   components?: APIActionRowComponent<APIMessageActionRowComponent>[],
 ) => {
   try {
+    const row = new ActionRowBuilder().addComponents(
+      new ButtonBuilder()
+        .setStyle(ButtonStyle.Primary)
+        .setLabel('Link')
+        .setURL(twitterLinks[i]),
+    );
     const channel = client.channels.cache.get(channelId);
     if (channel === undefined) {
       new Error('Channel does not exist');
