@@ -14,6 +14,8 @@ twi-dougaのランキングをdiscordに送信します。
 # set env
 cp .env.sample .env.local
 vim .env.local
+# install packages
+bun i
 # install browser
 bun run puppeteer
 # init database
@@ -31,6 +33,8 @@ https://bun.sh/guides/ecosystem/systemd
 ## Development
 
 ```bash
+# install packages
+bun i
 # install browser
 bun run puppeteer
 # init database
