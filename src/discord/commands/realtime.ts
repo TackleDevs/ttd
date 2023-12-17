@@ -24,24 +24,13 @@ export const realtime: Command = {
         new Error('scraping error');
         return;
       }
+      const twitterLinks = links.twitterLinks;
+      const twiLinks = links.twiLinks;
       await interaction.editReply('検索が完了しました 結果を表示します');
-      const twitterLinks = links.filter((link, index) => {
-        if (index % 2 === 1 && !link.includes('twimg')) {
-          return link;
-        }
-      });
+      const length = twitterLinks.length;
       const fxtwitterLinks = twitterLinks.map((link) =>
         link.replace('twitter', 'fxtwitter'),
       );
-      const twiLinks = links.filter((link, index) => {
-        if (index % 2 === 0 && !link.includes('twitter')) {
-          return link;
-        }
-      });
-      if (fxtwitterLinks.length === twiLinks.length) {
-        new Error('scraping error');
-      }
-      const length = twitterLinks.length;
 
       for (let i = 0; i < length; i++) {
         const rows = new ActionRowBuilder<ButtonBuilder>()
@@ -65,7 +54,7 @@ export const realtime: Command = {
         interaction.channelId,
         '=====================================================\n' +
           '以上、' +
-          links.length / 2 +
+          twitterLinks.length / 2 +
           '件でした',
       );
     } catch (error) {

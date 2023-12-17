@@ -31,7 +31,20 @@ export const getRealtimeLinks = async () => {
     });
 
     await browser.close();
-    return links;
+    const twitterLinks = links.filter((link, index) => {
+      if (index % 2 === 1 && !link.includes('twimg')) {
+        return link;
+      }
+    });
+    const twiLinks = links.filter((link, index) => {
+      if (index % 2 === 0 && !link.includes('twitter')) {
+        return link;
+      }
+    });
+    if (twitterLinks.length === twiLinks.length) {
+      new Error('scraping error');
+    }
+    return { twitterLinks, twiLinks };
   } catch (error) {
     console.error(error);
   }
