@@ -41,7 +41,7 @@ export const getRealtimeLinks = async () => {
         return link;
       }
     });
-    if (twitterLinks.length === twiLinks.length) {
+    if (twitterLinks.length !== twiLinks.length) {
       new Error('scraping error');
     }
     return { twitterLinks, twiLinks };
