@@ -18,9 +18,16 @@ export const getDayLinks = async () => {
     await page.setViewport({ width: 1280, height: 800 });
     await page.goto('https://www.twidouga.net/jp/ranking_t.php');
 
-    const links = await page.evaluate(() => {
+    let preLinks = await page.evaluate(() => {
       const anchors = Array.from(document.querySelectorAll('.gazou a'));
       return anchors.map((anchor) => (anchor as HTMLAnchorElement).href);
+    });
+    preLinks = Array.from(new Set(preLinks));
+
+    const links = preLinks.filter((link) => {
+      if (link.includes('twimg')) {
+        return link;
+      }
     });
 
     await browser.close();
