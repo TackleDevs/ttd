@@ -1,15 +1,41 @@
-# Elysia with Bun runtime
+# ttd (twi-douga to discord)
+
+twi-dougaのランキングをdiscordに送信します。
+
+- `/realtime`コマンドで、リアルタイムランキングを送信します。
+
+- `/set`コマンドで、そのチャンネルに毎日ランキングを送信します。
+
+- `/unset`コマンドで、送信を中止します。
 
 ## Getting Started
-To get started with this template, simply paste this command into your terminal:
+
 ```bash
-bun create elysia ./elysia-example
+# set env
+cp .env.sample .env.local
+vim .env.local
+# install browser
+bun run puppeteer
+# init database
+bun run prisma
+# start server
+bun start
 ```
+
+### Run Bun as a daemon with systemd
+
+read here.
+
+https://bun.sh/guides/ecosystem/systemd
 
 ## Development
-To start the development server run:
-```bash
-bun run dev
-```
 
-Open http://localhost:3000/ with your browser to see the result.
+```bash
+# install browser
+bun run puppeteer
+# init database
+bun dev:prisma
+
+# start server
+bun dev
+```
